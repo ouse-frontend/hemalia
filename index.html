@@ -23,6 +23,63 @@
             min-height: 100vh;
             line-height: 1.4; /* تقليل تباعد الأسطر */
         }
+           .carousel-container {
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel {
+      scrollbar-width: none;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      border-radius: 16px;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      height: 16px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #b0b0b0;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dot.active {
+      width: 15px;
+      height: 5px;
+      border-radius:2px;
+      background: #0096FF;
+      transform: scale(1);
+    }
 
         /* حاوية صفحة المنتج */
         .product-page {
@@ -539,9 +596,76 @@
         <div class="product-content">
             
             <!-- صورة المنتج -->
-            <div class="product-image-container">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="بيتزا إيطالية" class="product-image">
-            </div>
+ <div class="product-image-container">
+   <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <img src="https://picsum.photos/id/1015/600/800" alt="صورة 1">
+      <img src="https://picsum.photos/id/1016/600/800" alt="صورة 2">
+      <img src="https://picsum.photos/id/1018/600/800" alt="صورة 3">
+      <img src="https://picsum.photos/id/1020/600/800" alt="صورة 4">
+      <img src="https://picsum.photos/id/1024/600/800" alt="صورة 5">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="بيتزا إيطالية" class="product-image">
+    </div>
+    <div class="dots" id="dots"></div>
+   </div>
+ </div>
+          
+          <script>
+    const carousel = document.getElementById('carousel');
+    const dotsContainer = document.getElementById('dots');
+    const images = carousel.querySelectorAll('img');
+    let currentIndex = 0;
+
+    // إنشاء النقط
+    images.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+      });
+      
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+      currentIndex = index;
+      const slideWidth = carousel.offsetWidth;
+      
+      // مهم جداً في الـ RTL
+      carousel.scrollTo({
+        left: slideWidth * index,
+        behavior: 'smooth'
+      });
+      
+      updateDots();
+    }
+
+    function updateDots() {
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    // الحل الأساسي للمشكلة
+    carousel.addEventListener('scroll', () => {
+      const slideWidth = carousel.offsetWidth;
+      
+      // بنستخدم Math.abs عشان نحل مشكلة الـ RTL
+      const scrollLeft = Math.abs(carousel.scrollLeft);
+      const newIndex = Math.round(scrollLeft / slideWidth);
+      
+      if (newIndex !== currentIndex && newIndex >= 0 && newIndex < images.length) {
+        currentIndex = newIndex;
+        updateDots();
+      }
+    });
+  </script>
+          
+
 
             <!-- العلامات (على اليمين) -->
             <div class="tags">
