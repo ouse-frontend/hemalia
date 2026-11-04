@@ -5,8 +5,8 @@
 }
 
 body {
-    background-color: #ffffff; /* White background */
-    color: #333333; /* Dark text for readability */
+    background-color: #121212;
+    color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     line-height: 1.4;
@@ -26,7 +26,7 @@ body {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Softer shadow for light theme */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
     scrollbar-width: none;
 }
 
@@ -55,7 +55,7 @@ body {
 .dot {
     width: 3px;
     height: 3px;
-    background: #cccccc; /* Light gray dots */
+    background: #b0b0b0;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -74,7 +74,7 @@ body {
     display: block;
     width: 100%;
     min-height: 100vh;
-    background-color: #ffffff;
+    background-color: #121212;
     padding-bottom: 20px;
 }
 
@@ -108,19 +108,19 @@ body {
 }
 
 .tag {
-    background-color: #f0f0f0;
-    border: 1px solid #e0e0e0;
+    background-color: #222;
+    border: 1px solid #333;
     padding: 3px 10px;
     border-radius: 15px;
     font-size: 6px;
-    color: #666666;
+    color: #aaa;
 }
 
 /* Title */
 .product-title {
     font-size: 17px;
     font-weight: bold;
-    color: #0076cc; /* Slightly darker blue for better contrast on white */
+    color: #3b82f6;
     text-align: right;
     margin-bottom: 10px;
     margin-top: 5px;
@@ -133,7 +133,7 @@ body {
     gap: 15px;
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eaeaea; /* Light border */
+    border-bottom: 1px solid #333;
     flex-wrap: wrap;
 }
 
@@ -146,12 +146,12 @@ body {
 .meta-value {
     font-size: 4px;
     font-weight: bold;
-    color: #222222;
+    color: #fff;
 }
 
 .meta-label {
     font-size: 4px;
-    color: #888888;
+    color: #888;
     margin-top: 2px;
 }
 
@@ -159,15 +159,15 @@ body {
 .product-description {
     line-height: 1.6;
     font-size: 6px;
-    color: #555555;
+    color: #ccc;
     margin-bottom: 15px;
     text-align: right;
 }
 
 /* Info box */
 .product-info {
-    background-color: #fafafa; /* Very light gray */
-    border: 1px solid #eaeaea;
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -185,12 +185,12 @@ body {
     font-size: 6px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #222222;
+    color: #fff;
 }
 
 .info-content {
     font-size: 6px;
-    color: #666666;
+    color: #aaa;
     line-height: 1.6;
 }
 
@@ -200,8 +200,8 @@ body {
 
 .info-list li {
     padding: 5px 0;
-    border-bottom: 1px solid #eeeeee;
-    color: #666666;
+    border-bottom: 1px solid #2a2a2a;
+    color: #aaa;
     font-size: 10px;
     display: flex;
     gap: 5px;
@@ -212,14 +212,14 @@ body {
 }
 
 .info-list strong {
-    color: #333333;
+    color: #ddd;
 }
 
 /* Details blocks */
 .details-block {
     margin-bottom: 15px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #333;
 }
 
 .details-block:last-of-type {
@@ -245,26 +245,23 @@ body {
     width: 25%;
     margin: 7px 0;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 150, 255, 0.2);
-    transition: background 0.2s, transform 0.2s;
 }
 
 .order-main-button:hover {
     background-color: #007cdb;
-    transform: translateY(-1px);
 }
 
 /* Comments */
 .comments-section {
-    background-color: #fafafa;
+    background-color: #1a1a1a;
     padding: 15px;
     border-radius: 8px;
-    border: 1px solid #eaeaea;
+    border: 1px solid #2a2a2a;
 }
 
 .comment {
     padding: 10px 0;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #2a2a2a;
 }
 
 .comment:last-child {
@@ -279,17 +276,17 @@ body {
 
 .comment-author {
     font-weight: bold;
-    color: #222222;
+    color: #fff;
     font-size: 6px;
 }
 
 .comment-date {
-    color: #888888;
+    color: #888;
     font-size: 6px;
 }
 
 .comment-text {
-    color: #555555;
+    color: #ccc;
     line-height: 1.4;
     font-size: 6px;
 }
