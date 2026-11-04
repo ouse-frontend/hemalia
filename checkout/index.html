@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب - بيتزا إيطالية</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="checkout-page">
+
+        <!-- رأس الصفحة -->
+        <header class="checkout-header">
+            <a href="../" class="back-btn" aria-label="رجوع">
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <h1><i class="fas fa-shopping-cart"></i> إتمام الطلب</h1>
+        </header>
+
+        <div class="checkout-container">
+
+            <div class="alert success" id="modalSuccessAlert">
+                <i class="fas fa-check-circle"></i> تم تجهيز طلبك! سيتم تحويلك إلى واتساب...
+            </div>
+
+            <div class="alert error" id="modalErrorAlert">
+                <i class="fas fa-exclamation-circle"></i> يرجى ملء جميع الحقول المطلوبة
+            </div>
+
+            <!-- معلومات المنتج -->
+            <div class="modal-product-info">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                     alt="بيتزا إيطالية" class="modal-product-img">
+                <div class="modal-product-details">
+                    <div class="modal-product-title">بيتزا إيطالية</div>
+                    <div class="modal-product-price">250 جنيه</div>
+                    <div style="color: #aaa; font-size: 12px;">المصور: ماركو الإيطالي</div>
+                </div>
+            </div>
+
+            <div class="checkout-form" id="checkoutForm">
+
+                <!-- قسم الاتصال -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-address-card"></i> معلومات الاتصال
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني أو رقم الهاتف <span style="color: #ff9900;">*</span></label>
+                        <input type="text" class="form-control" id="modalContact"
+                               placeholder="example@email.com أو 01xxxxxxxxx">
+                    </div>
+                    <div class="whatsapp-update">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>احصل على تحديثات الطلب عبر واتساب</span>
+                    </div>
+                </div>
+
+                <!-- قسم التوصيل -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-truck"></i> عنوان التوصيل
+                    </div>
+                    <div class="form-group">
+                        <label>الدولة <span style="color: #ff9900;">*</span></label>
+                        <select class="form-control" id="modalCountry">
+                            <option value="مصر" selected>مصر</option>
+                            <option value="السعودية">السعودية</option>
+                            <option value="الإمارات">الإمارات</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الاسم الأول <span style="color: #ff9900;">*</span></label>
+                            <input type="text" class="form-control" id="modalFirstName" placeholder="محمد">
+                        </div>
+                        <div class="form-group">
+                            <label>الاسم الأخير <span style="color: #ff9900;">*</span></label>
+                            <input type="text" class="form-control" id="modalLastName" placeholder="أحمد">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>العنوان <span style="color: #ff9900;">*</span></label>
+                        <input type="text" class="form-control" id="modalAddress"
+                               placeholder="شارع 9، المبنى 12، شقة 5">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>المدينة <span style="color: #ff9900;">*</span></label>
+                            <input type="text" class="form-control" id="modalCity" placeholder="القاهرة">
+                        </div>
+                        <div class="form-group">
+                            <label>المحافظة</label>
+                            <select class="form-control" id="modalGovernorate">
+                                <option value="القاهرة" selected>القاهرة</option>
+                                <option value="الجيزة">الجيزة</option>
+                                <option value="الإسكندرية">الإسكندرية</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>رقم الهاتف <span style="color: #ff9900;">*</span></label>
+                            <input type="tel" class="form-control" id="modalPhone" placeholder="01234567890">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم الشحن -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-shipping-fast"></i> طريقة الشحن
+                    </div>
+                    <div class="shipping-options" id="shippingOptions">
+                        <div class="shipping-option selected" data-price="10" data-name="Fast & Safe Shipping">
+                            <div class="name">Fast &amp; Safe Shipping</div>
+                            <div class="price">£10.00</div>
+                        </div>
+                        <div class="shipping-option" data-price="0" data-name="Free Shipping">
+                            <div class="name">Free Shipping</div>
+                            <div class="price free">FREE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ملخص الطلب -->
+                <div class="order-summary">
+                    <div class="summary-item">
+                        <span>المبلغ الإجمالي للمنتج:</span>
+                        <span id="summarySubtotal">250 جنيه</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>تكلفة الشحن:</span>
+                        <span id="summaryShipping">10.00 جنيه</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>الإجمالي:</span>
+                        <span id="summaryTotal">260 جنيه</span>
+                    </div>
+                </div>
+
+                <!-- زر إرسال الطلب -->
+                <button class="submit-order-btn" id="submitOrderBtn">
+                    <i class="fab fa-whatsapp"></i>
+                    إرسال الطلب عبر واتساب
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
