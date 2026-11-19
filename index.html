@@ -1,144 +1,525 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بيتزا إيطالية - صفحة المنتج</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crezenda — wood HPL counter designs</title>
+  <!-- Font Awesome (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font for clean typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- مكتبة الأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fbf9f7;
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
 
-    <!-- أنماط صفحة المنتج -->
-    <link rel="stylesheet" href="style.css">
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      color: #3b2e24;
+    }
+
+    .logo span {
+      font-weight: 300;
+      color: #8b7a6b;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3b2e24;
+      transition: color 0.2s ease;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links a:hover {
+      color: #b28b5c;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 3.5rem 0 4rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.4rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: #2a211b;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content h1 i {
+      font-style: normal;
+      color: #9b7b5c;
+      font-weight: 400;
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: #5b4d41;
+      max-width: 90%;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      letter-spacing: -0.01em;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background-color: #3b2e24;
+      color: #fbf9f7;
+      border-color: #3b2e24;
+    }
+
+    .btn-primary:hover {
+      background-color: #5a4a3b;
+      border-color: #5a4a3b;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #3b2e24;
+      border-color: #d9cfc4;
+    }
+
+    .btn-outline:hover {
+      background-color: #f2ede8;
+      border-color: #b8a99a;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 25px 40px -20px rgba(0, 0, 0, 0.25);
+      aspect-ratio: 1 / 1;
+      background: #e8e0d7;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Section headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #2a211b;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: #7b6b5d;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    /* Gallery */
+    .gallery {
+      padding: 2rem 0 5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      border: 1px solid #f0eae4;
+    }
+
+    .card:hover {
+      box-shadow: 0 25px 30px -15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-6px);
+      border-color: #e2d7cd;
+    }
+
+    .card-img {
+      aspect-ratio: 1 / 1;
+      background: #d9cfc4;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-img img {
+      transform: scale(1.03);
+    }
+
+    .card-info {
+      padding: 1.5rem 1.5rem 1.75rem;
+    }
+
+    .card-info h3 {
+      font-weight: 500;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+      color: #2a211b;
+    }
+
+    .card-info .material {
+      font-size: 0.9rem;
+      color: #9b8a7a;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-info .material i {
+      font-size: 0.75rem;
+      color: #b28b5c;
+    }
+
+    /* HPL highlight band */
+    .hpl-band {
+      background: #2e251f;
+      color: #f2ede8;
+      padding: 4rem 0;
+      border-radius: 48px;
+      margin: 2rem 0 4rem;
+    }
+
+    .hpl-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hpl-text h3 {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+      color: #f2ede8;
+    }
+
+    .hpl-text p {
+      color: #cbb9a8;
+      max-width: 600px;
+      font-weight: 300;
+      font-size: 1.1rem;
+    }
+
+    .hpl-badge {
+      font-size: 2.8rem;
+      color: #b28b5c;
+      opacity: 0.9;
+    }
+
+    /* contact / footer */
+    .footer {
+      border-top: 1px solid #e2d7cd;
+      padding: 2.5rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: #7b6b5d;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #5b4d41;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #b28b5c;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 2rem 0 3rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero-content p {
+        max-width: 100%;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hpl-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hpl-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hpl-badge i {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.25rem 0;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cta {
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+      }
+
+      .hpl-band {
+        padding: 2.5rem 1.5rem;
+        border-radius: 32px;
+      }
+
+      .hpl-text h3 {
+        font-size: 1.6rem;
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <div class="product-page">
-        <div class="product-content">
-
-            <!-- صورة المنتج -->
-            <div class="product-image-container">
-                <div class="carousel-container">
-                    <div class="carousel" id="carousel">
-                        <img src="https://picsum.photos/id/1015/600/800" alt="صورة 1">
-                        <img src="https://picsum.photos/id/1016/600/800" alt="صورة 2">
-                        <img src="https://picsum.photos/id/1018/600/800" alt="صورة 3">
-                        <img src="https://picsum.photos/id/1020/600/800" alt="صورة 4">
-                        <img src="https://picsum.photos/id/1024/600/800" alt="صورة 5">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                             alt="بيتزا إيطالية" class="product-image">
-                    </div>
-                    <div class="dots" id="dots"></div>
-                </div>
-            </div>
-
-            <!-- العلامات -->
-            <div class="tags">
-                <span class="tag">مطعم</span>
-                <span class="tag">طعام</span>
-                <span class="tag">جبن</span>
-                <span class="tag">إيطالي</span>
-                <span class="tag">بيتزا</span>
-            </div>
-
-            <!-- عنوان المنتج -->
-            <h1 class="product-title">بيتزا إيطالية</h1>
-
-            <!-- ========== تكرار المعلومات 5 مرات ========== -->
-            <div class="details-block">
-                <div class="product-meta">
-                    <div class="meta-item"><div class="meta-value">3,450</div><div class="meta-label">إعجاب</div></div>
-                    <div class="meta-item"><div class="meta-value">1,870</div><div class="meta-label">تحميل</div></div>
-                    <div class="meta-item"><div class="meta-value">26,700</div><div class="meta-label">مشاهدة</div></div>
-                    <div class="meta-item"><div class="meta-value">ماركو الإيطالي</div><div class="meta-label">المصور</div></div>
-                </div>
-                <p class="product-description">بيتزا إيطالية أصلية بالجبن الذائب والطماطم والريحان. الجبن يمتد ليشكل منظراً شهياً.</p>
-                <div class="product-info">
-                    <div class="info-section"><h3 class="info-title">تفاصيل التصوير</h3><p class="info-content">تصوير مقرب مع إضاءة دافئة. f/2.8، 1/160 ثانية، ISO 400.</p></div>
-                    <div class="info-section"><h3 class="info-title">معلومات تقنية</h3><ul class="info-list"><li><strong>الموقع:</strong> مطعم في نابولي</li><li><strong>التاريخ:</strong> 22 مارس 2023</li><li><strong>المعدات:</strong> Canon 6D Mark II، عدسة 50mm</li></ul></div>
-                </div>
-            </div>
-
-            <div class="details-block">
-                <div class="product-meta">
-                    <div class="meta-item"><div class="meta-value">3,450</div><div class="meta-label">إعجاب</div></div>
-                    <div class="meta-item"><div class="meta-value">1,870</div><div class="meta-label">تحميل</div></div>
-                    <div class="meta-item"><div class="meta-value">26,700</div><div class="meta-label">مشاهدة</div></div>
-                    <div class="meta-item"><div class="meta-value">ماركو الإيطالي</div><div class="meta-label">المصور</div></div>
-                </div>
-                <p class="product-description">بيتزا إيطالية أصلية بالجبن الذائب والطماطم والريحان. الجبن يمتد ليشكل منظراً شهياً.</p>
-                <div class="product-info">
-                    <div class="info-section"><h3 class="info-title">تفاصيل التصوير</h3><p class="info-content">تصوير مقرب مع إضاءة دافئة. f/2.8، 1/160 ثانية، ISO 400.</p></div>
-                    <div class="info-section"><h3 class="info-title">معلومات تقنية</h3><ul class="info-list"><li><strong>الموقع:</strong> مطعم في نابولي</li><li><strong>التاريخ:</strong> 22 مارس 2023</li><li><strong>المعدات:</strong> Canon 6D Mark II، عدسة 50mm</li></ul></div>
-                </div>
-            </div>
-
-            <div class="details-block">
-                <div class="product-meta">
-                    <div class="meta-item"><div class="meta-value">3,450</div><div class="meta-label">إعجاب</div></div>
-                    <div class="meta-item"><div class="meta-value">1,870</div><div class="meta-label">تحميل</div></div>
-                    <div class="meta-item"><div class="meta-value">26,700</div><div class="meta-label">مشاهدة</div></div>
-                    <div class="meta-item"><div class="meta-value">ماركو الإيطالي</div><div class="meta-label">المصور</div></div>
-                </div>
-                <p class="product-description">بيتزا إيطالية أصلية بالجبن الذائب والطماطم والريحان. الجبن يمتد ليشكل منظراً شهياً.</p>
-                <div class="product-info">
-                    <div class="info-section"><h3 class="info-title">تفاصيل التصوير</h3><p class="info-content">تصوير مقرب مع إضاءة دافئة. f/2.8، 1/160 ثانية، ISO 400.</p></div>
-                    <div class="info-section"><h3 class="info-title">معلومات تقنية</h3><ul class="info-list"><li><strong>الموقع:</strong> مطعم في نابولي</li><li><strong>التاريخ:</strong> 22 مارس 2023</li><li><strong>المعدات:</strong> Canon 6D Mark II، عدسة 50mm</li></ul></div>
-                </div>
-            </div>
-
-            <div class="details-block">
-                <div class="product-meta">
-                    <div class="meta-item"><div class="meta-value">3,450</div><div class="meta-label">إعجاب</div></div>
-                    <div class="meta-item"><div class="meta-value">1,870</div><div class="meta-label">تحميل</div></div>
-                    <div class="meta-item"><div class="meta-value">26,700</div><div class="meta-label">مشاهدة</div></div>
-                    <div class="meta-item"><div class="meta-value">ماركو الإيطالي</div><div class="meta-label">المصور</div></div>
-                </div>
-                <p class="product-description">بيتزا إيطالية أصلية بالجبن الذائب والطماطم والريحان. الجبن يمتد ليشكل منظراً شهياً.</p>
-                <div class="product-info">
-                    <div class="info-section"><h3 class="info-title">تفاصيل التصوير</h3><p class="info-content">تصوير مقرب مع إضاءة دافئة. f/2.8، 1/160 ثانية، ISO 400.</p></div>
-                    <div class="info-section"><h3 class="info-title">معلومات تقنية</h3><ul class="info-list"><li><strong>الموقع:</strong> مطعم في نابولي</li><li><strong>التاريخ:</strong> 22 مارس 2023</li><li><strong>المعدات:</strong> Canon 6D Mark II، عدسة 50mm</li></ul></div>
-                </div>
-            </div>
-
-            <div class="details-block">
-                <div class="product-meta">
-                    <div class="meta-item"><div class="meta-value">3,450</div><div class="meta-label">إعجاب</div></div>
-                    <div class="meta-item"><div class="meta-value">1,870</div><div class="meta-label">تحميل</div></div>
-                    <div class="meta-item"><div class="meta-value">26,700</div><div class="meta-label">مشاهدة</div></div>
-                    <div class="meta-item"><div class="meta-value">ماركو الإيطالي</div><div class="meta-label">المصور</div></div>
-                </div>
-                <p class="product-description">بيتزا إيطالية أصلية بالجبن الذائب والطماطم والريحان. الجبن يمتد ليشكل منظراً شهياً.</p>
-                <div class="product-info">
-                    <div class="info-section"><h3 class="info-title">تفاصيل التصوير</h3><p class="info-content">تصوير مقرب مع إضاءة دافئة. f/2.8، 1/160 ثانية، ISO 400.</p></div>
-                    <div class="info-section"><h3 class="info-title">معلومات تقنية</h3><ul class="info-list"><li><strong>الموقع:</strong> مطعم في نابولي</li><li><strong>التاريخ:</strong> 22 مارس 2023</li><li><strong>المعدات:</strong> Canon 6D Mark II، عدسة 50mm</li></ul></div>
-                </div>
-            </div>
-
-            <!-- زر الطلب → يفتح صفحة الدفع -->
-            <a href="./checkout/" class="order-main-button" id="openOrderModal">
-                Buy
-            </a>
-
-            <!-- التعليقات -->
-            <div class="comments-section">
-                <h3 class="info-title" style="margin-bottom: 10px;">التعليقات (1)</h3>
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="comment-author">عمر</span>
-                        <span class="comment-date">2023-03-28</span>
-                    </div>
-                    <p class="comment-text">أفضل بيتزا رأيتها!</p>
-                </div>
-            </div>
-
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">crezenda<span>.</span></div>
+        <div class="nav-links">
+          <a href="#">Collections</a>
+          <a href="#">HPL Counters</a>
+          <a href="#">Materials</a>
+          <a href="#">Contact</a>
         </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <div class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Wood HPL counters <i>crafted</i> for modern living</h1>
+          <p>High-pressure laminate surfaces with authentic wood grain — durable, stain-resistant, and warm. Designed and made by Crezenda.</p>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-primary">Explore designs</a>
+            <a href="#" class="btn btn-outline">Request sample</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop" alt="Warm wood HPL counter detail">
+        </div>
+      </section>
     </div>
 
-    <!-- سكربت صفحة المنتج -->
-    <script src="script.js"></script>
-</body>
+    <!-- Gallery section -->
+    <section class="gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2>Wood HPL counter collection</h2>
+          <p>Realistic textures, timeless tones, and Crezenda’s signature finish.</p>
+        </div>
+        <div class="gallery-grid">
+          <!-- Card 1 -->
+          <div class="card">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=1976&auto=format&fit=crop" alt="Oak finish HPL countertop">
+            </div>
+            <div class="card-info">
+              <h3>Natural Oak</h3>
+              <div class="material"><i class="fas fa-leaf"></i> HPL · woodgrain · matte</div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="card">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1976&auto=format&fit=crop" alt="Walnut wood HPL surface">
+            </div>
+            <div class="card-info">
+              <h3>Rich Walnut</h3>
+              <div class="material"><i class="fas fa-tree"></i> HPL · deep grain · satin</div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="card">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=2069&auto=format&fit=crop" alt="Ash wood HPL counter design">
+            </div>
+            <div class="card-info">
+              <h3>Pale Ash</h3>
+              <div class="material"><i class="fas fa-sun"></i> HPL · light grain · textured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- HPL highlight band -->
+    <div class="container">
+      <div class="hpl-band">
+        <div class="hpl-content">
+          <div class="hpl-text">
+            <h3>HPL performance, wood warmth.</h3>
+            <p>Crezenda’s wood HPL counters combine the tactile beauty of natural timber with the resilience of high-pressure laminate. Resistant to scratches, moisture and daily wear — without compromising on style.</p>
+          </div>
+          <div class="hpl-badge">
+            <i class="fas fa-layer-group"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA / second gallery? maybe a single feature strip? we can keep minimal -->
+    <div class="container" style="padding-bottom: 2rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; border-top: 1px solid #e2d7cd; padding-top: 2.5rem;">
+        <div>
+          <p style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.02em; color: #2a211b;">Request a wood HPL sample kit</p>
+          <p style="color: #7b6b5d; font-weight: 300;">See and feel the Crezenda finish — delivered to your studio.</p>
+        </div>
+        <a href="#" class="btn btn-outline" style="white-space: nowrap;"><i class="fas fa-arrow-right" style="margin-left: 8px;"></i> Order sample</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer">
+        <div class="logo" style="font-size: 1.4rem;">crezenda<span>.</span></div>
+        <div class="footer-links">
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">Houzz</a>
+          <a href="#">Contact</a>
+        </div>
+        <div style="font-size: 0.85rem;">© 2025 Crezenda — wood HPL designs</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>
