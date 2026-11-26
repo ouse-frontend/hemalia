@@ -1,525 +1,447 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crezenda — wood HPL counter designs</title>
-  <!-- Font Awesome (free icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Font for clean typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cascoi — Furniture & Interior Design</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&display=swap">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html, body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Figtree', sans-serif; }
+    .scroll-trigger { opacity: 1 !important; transform: none !important; }
+
+    #CreativeConversion {
+      background: #000; color: #fff;
+      padding-top: 80px; padding-bottom: 120px;
+      overflow: hidden; position: relative;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fbf9f7;
-      color: #1e1e1e;
-      line-height: 1.5;
+    #CreativeConversion .cc-grid-bg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
+    #CreativeConversion .cc-grid-square {
+      position: absolute; width: 48px; height: 48px;
+      background: rgba(255,255,255,0.035); opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    #CreativeConversion .cc-grid-square.active { opacity: 1; }
+
+    #CreativeConversion .cc-grid-line {
+      position: absolute; opacity: 0; pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+    }
+    #CreativeConversion .cc-grid-line.is-horizontal { width: 200px; height: 1px; }
+    #CreativeConversion .cc-grid-line.is-vertical {
+      width: 1px; height: 200px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.22), transparent);
     }
 
-    /* Header / nav */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.75rem 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    #CreativeConversion .cc-inner {
+      position: relative; z-index: 2; max-width: 1600px; margin: 0 auto; padding: 0 20px;
     }
 
-    .logo {
-      font-weight: 600;
-      font-size: 1.8rem;
-      letter-spacing: -0.02em;
-      color: #3b2e24;
-    }
-
-    .logo span {
-      font-weight: 300;
-      color: #8b7a6b;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      font-weight: 400;
-      font-size: 1rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #3b2e24;
-      transition: color 0.2s ease;
-      letter-spacing: -0.01em;
-    }
-
-    .nav-links a:hover {
-      color: #b28b5c;
-    }
-
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      padding: 3.5rem 0 4rem;
-    }
-
-    .hero-content h1 {
-      font-size: 3.4rem;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-      color: #2a211b;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-content h1 i {
-      font-style: normal;
-      color: #9b7b5c;
-      font-weight: 400;
-    }
-
-    .hero-content p {
-      font-size: 1.15rem;
-      color: #5b4d41;
-      max-width: 90%;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      border-radius: 40px;
-      font-weight: 500;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: all 0.25s ease;
-      letter-spacing: -0.01em;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background-color: #3b2e24;
-      color: #fbf9f7;
-      border-color: #3b2e24;
-    }
-
-    .btn-primary:hover {
-      background-color: #5a4a3b;
-      border-color: #5a4a3b;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: #3b2e24;
-      border-color: #d9cfc4;
-    }
-
-    .btn-outline:hover {
-      background-color: #f2ede8;
-      border-color: #b8a99a;
-      transform: translateY(-2px);
-    }
-
-    .hero-image {
-      position: relative;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 25px 40px -20px rgba(0, 0, 0, 0.25);
-      aspect-ratio: 1 / 1;
-      background: #e8e0d7;
-    }
-
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .hero-image:hover img {
-      transform: scale(1.02);
-    }
-
-    /* Section headers */
-    .section-header {
+    #CreativeConversion .cc-heading {
       text-align: center;
-      margin-bottom: 3rem;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.15; font-weight: 800;
+      margin: 0 0 120px; letter-spacing: -0.04em;
+    }
+    #CreativeConversion .cc-highlight { color: #0096fc; display: block; }
+
+    #CreativeConversion .cc-gallery { display: grid; gap: 18px; align-items: start; }
+    #CreativeConversion .cc-gallery-desktop { grid-template-columns: repeat(5, 1fr); }
+    #CreativeConversion .cc-gallery-mobile { display: none; }
+
+    #CreativeConversion .cc-column {
+      display: flex; flex-direction: column; gap: 18px;
+      align-self: start; will-change: transform;
+    }
+    #CreativeConversion .cc-gallery-desktop .cc-column:nth-child(even) { margin-top: 120px; }
+
+    #CreativeConversion .cc-card {
+      border-radius: 8px; overflow: hidden;
+      background: rgba(255,255,255,.04);
+      opacity: 0; transform: translateY(70px) scale(.98);
+      transition: opacity 800ms ease, transform 800ms ease;
+    }
+    #CreativeConversion .cc-card.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+    #CreativeConversion .cc-card-button {
+      display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: pointer;
+    }
+    #CreativeConversion .cc-card img { display: block; width: 100%; height: auto; }
+
+    #CreativeConversion .cc-card.cc-square img { aspect-ratio: 1 / 1; object-fit: cover; }
+    #CreativeConversion .cc-card.cc-wide img   { aspect-ratio: 16 / 10; object-fit: cover; }
+    #CreativeConversion .cc-card.cc-short img  { aspect-ratio: 4 / 3; object-fit: cover; }
+    #CreativeConversion .cc-card.cc-tall img   { height: auto; object-fit: contain; }
+
+    #CreativeConversion .cc-popup {
+      position: fixed; inset: 0; z-index: 999999;
+      display: none; align-items: center; justify-content: center;
+      padding: 24px; background: rgba(0,0,0,.84);
+    }
+    #CreativeConversion .cc-popup.is-open { display: flex; }
+    #CreativeConversion .cc-popup-content { position: relative; max-width: min(92vw, 980px); max-height: 90vh; }
+    #CreativeConversion .cc-popup-img {
+      display: block; max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 10px;
+    }
+    #CreativeConversion .cc-popup-close {
+      position: absolute; top: -44px; right: 0;
+      width: 38px; height: 38px; border: 0; border-radius: 999px;
+      background: #fff; color: #000; cursor: pointer;
+      font-size: 26px; line-height: 38px;
     }
 
-    .section-header h2 {
-      font-size: 2.2rem;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      color: #2a211b;
-      margin-bottom: 0.75rem;
+    @media (max-width: 989px) {
+      #CreativeConversion .cc-gallery-desktop { grid-template-columns: repeat(3, 1fr); }
+      #CreativeConversion .cc-gallery-desktop .cc-column:nth-child(even) { margin-top: 80px; }
     }
 
-    .section-header p {
-      color: #7b6b5d;
-      font-size: 1.05rem;
-      font-weight: 300;
-    }
-
-    /* Gallery */
-    .gallery {
-      padding: 2rem 0 5rem;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 24px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
-      border: 1px solid #f0eae4;
-    }
-
-    .card:hover {
-      box-shadow: 0 25px 30px -15px rgba(0, 0, 0, 0.1);
-      transform: translateY(-6px);
-      border-color: #e2d7cd;
-    }
-
-    .card-img {
-      aspect-ratio: 1 / 1;
-      background: #d9cfc4;
-      overflow: hidden;
-    }
-
-    .card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .card:hover .card-img img {
-      transform: scale(1.03);
-    }
-
-    .card-info {
-      padding: 1.5rem 1.5rem 1.75rem;
-    }
-
-    .card-info h3 {
-      font-weight: 500;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.3rem;
-      color: #2a211b;
-    }
-
-    .card-info .material {
-      font-size: 0.9rem;
-      color: #9b8a7a;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .card-info .material i {
-      font-size: 0.75rem;
-      color: #b28b5c;
-    }
-
-    /* HPL highlight band */
-    .hpl-band {
-      background: #2e251f;
-      color: #f2ede8;
-      padding: 4rem 0;
-      border-radius: 48px;
-      margin: 2rem 0 4rem;
-    }
-
-    .hpl-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 3rem;
-    }
-
-    .hpl-text h3 {
-      font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.8rem;
-      color: #f2ede8;
-    }
-
-    .hpl-text p {
-      color: #cbb9a8;
-      max-width: 600px;
-      font-weight: 300;
-      font-size: 1.1rem;
-    }
-
-    .hpl-badge {
-      font-size: 2.8rem;
-      color: #b28b5c;
-      opacity: 0.9;
-    }
-
-    /* contact / footer */
-    .footer {
-      border-top: 1px solid #e2d7cd;
-      padding: 2.5rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: #7b6b5d;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-links a {
-      text-decoration: none;
-      color: #5b4d41;
-      transition: color 0.2s ease;
-    }
-
-    .footer-links a:hover {
-      color: #b28b5c;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 2rem 0 3rem;
+    @media (max-width: 749px) {
+      #CreativeConversion { padding-top: 60px; padding-bottom: 20px; }
+      #CreativeConversion .cc-inner { padding: 0; }
+      #CreativeConversion .cc-heading { padding: 0 20px; }
+      #CreativeConversion .cc-gallery-desktop { display: none; }
+      #CreativeConversion .cc-gallery-mobile {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 10px; width: 150%; margin-left: -25%; align-items: start;
       }
-
-      .hero-content h1 {
-        font-size: 2.6rem;
+      #CreativeConversion .cc-gallery-mobile .cc-column {
+        gap: 10px; margin-top: 0 !important; transition: transform 0.08s linear;
       }
-
-      .hero-content p {
-        max-width: 100%;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hpl-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hpl-text p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hpl-badge i {
-        font-size: 3.5rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 0 1.25rem;
-      }
-
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1.25rem 0;
-      }
-
-      .nav-links {
-        gap: 1.5rem;
-        font-size: 0.9rem;
-      }
-
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-cta {
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        padding: 0.75rem 1.5rem;
-      }
-
-      .hpl-band {
-        padding: 2.5rem 1.5rem;
-        border-radius: 32px;
-      }
-
-      .hpl-text h3 {
-        font-size: 1.6rem;
-      }
-
-      .footer {
-        flex-direction: column;
-        text-align: center;
-      }
+      #CreativeConversion .cc-popup { padding: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <nav class="navbar">
-        <div class="logo">crezenda<span>.</span></div>
-        <div class="nav-links">
-          <a href="#">Collections</a>
-          <a href="#">HPL Counters</a>
-          <a href="#">Materials</a>
-          <a href="#">Contact</a>
-        </div>
-      </nav>
+<section id="CreativeConversion">
+  <div class="cc-grid-bg" id="cc-grid-bg" aria-hidden="true"></div>
+  <div class="cc-inner">
+    <h2 class="cc-heading">
+      Creative Built for
+      <span class="cc-highlight">Cascoi Furniture designs Kitchens and Desks and Sideboards and Meeting Tables and Cabinets and TV+Units and Credenzas</span>
+    </h2>
+
+    <div class="cc-gallery cc-gallery-desktop" id="cc-gallery-desktop"></div>
+    <div class="cc-gallery cc-gallery-mobile" id="cc-gallery-mobile"></div>
+  </div>
+
+  <div class="cc-popup" aria-hidden="true">
+    <div class="cc-popup-content">
+      <button type="button" class="cc-popup-close" aria-label="Close popup">×</button>
+      <img class="cc-popup-img" src="" alt="">
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <!-- Hero section -->
-    <div class="container">
-      <section class="hero">
-        <div class="hero-content">
-          <h1>Wood HPL counters <i>crafted</i> for modern living</h1>
-          <p>High-pressure laminate surfaces with authentic wood grain — durable, stain-resistant, and warm. Designed and made by Crezenda.</p>
-          <div class="hero-cta">
-            <a href="#" class="btn btn-primary">Explore designs</a>
-            <a href="#" class="btn btn-outline">Request sample</a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop" alt="Warm wood HPL counter detail">
-        </div>
-      </section>
-    </div>
+<script>
+(() => {
+  const section = document.querySelector('#CreativeConversion');
+  if (!section) return;
 
-    <!-- Gallery section -->
-    <section class="gallery">
-      <div class="container">
-        <div class="section-header">
-          <h2>Wood HPL counter collection</h2>
-          <p>Realistic textures, timeless tones, and Crezenda’s signature finish.</p>
-        </div>
-        <div class="gallery-grid">
-          <!-- Card 1 -->
-          <div class="card">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=1976&auto=format&fit=crop" alt="Oak finish HPL countertop">
-            </div>
-            <div class="card-info">
-              <h3>Natural Oak</h3>
-              <div class="material"><i class="fas fa-leaf"></i> HPL · woodgrain · matte</div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="card">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1976&auto=format&fit=crop" alt="Walnut wood HPL surface">
-            </div>
-            <div class="card-info">
-              <h3>Rich Walnut</h3>
-              <div class="material"><i class="fas fa-tree"></i> HPL · deep grain · satin</div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="card">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=2069&auto=format&fit=crop" alt="Ash wood HPL counter design">
-            </div>
-            <div class="card-info">
-              <h3>Pale Ash</h3>
-              <div class="material"><i class="fas fa-sun"></i> HPL · light grain · textured</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  const BASE = 'images/';
 
-    <!-- HPL highlight band -->
-    <div class="container">
-      <div class="hpl-band">
-        <div class="hpl-content">
-          <div class="hpl-text">
-            <h3>HPL performance, wood warmth.</h3>
-            <p>Crezenda’s wood HPL counters combine the tactile beauty of natural timber with the resilience of high-pressure laminate. Resistant to scratches, moisture and daily wear — without compromising on style.</p>
-          </div>
-          <div class="hpl-badge">
-            <i class="fas fa-layer-group"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+  /* ============================================================
+     IMAGE FILES
+     ------------------------------------------------------------
+     Names taken from your `ls` output. Only real image files
+     included — no PDFs, no folders, no invented names.
+     Total: 110 images = 22 per desktop column (5 cols)
+                         = 37/37/36 on mobile (3 cols)
+     ============================================================ */
+  const FILES = [
+    "00b995388cfdba7e4804367cf6b7da60.jpg",
+    "00ba63d64220263d3fb280d6c48c8fc1.jpg",
+    "033f1fe9b99daf09edf0a4572a738abf.jpg",
+    "04bf6f3d942968d9f159efc0044584bd.jpg",
+    "07dd48f1617180dce75dcfb3822a0d9d.jpg",
+    "0897a602815ec3aa8c759a15799d92ed.jpg",
+    "08cadb7f3987e5c0f8363a98ace52a5b.jpg",
+    "0978590b8f986aaafbf097b667879588.jpg",
+    "09a070f04808f3e06a8254f3f0b33b62.jpg",
+    "0cde13ae70a5e7dca4da1c130438044b.jpg",
+    "0e0718771d8b26cf6f110ea22b7782ec.jpg",
+    "0f8b434f3166613b63d258a5a81db96e.jpg",
+    "12605ae4bdfb81e2cf57dcafd499558f.jpg",
+    "178d71f3fbe1279adb3fee45753a99ae.jpg",
+    "18a41225cc1e98f17b960dae336900f3.jpg",
+    "18f061b4ddec11030652ca7f6ef24b42.jpg",
+    "1a818c5a8151a1c5ad657f34cd418cb4.jpg",
+    "1b2cc9bf8ee7c6845482730c2196b977.jpg",
+    "1dc9058ebf9bb84c816f6dd1a0a4b025.jpg",
+    "1f3af2d931c662ec5d443476b53bcb8c.jpg",
+    "21e0cee178b09c59d6958f9da9f188fb.jpg",
+    "22bd9f6b281ba5026e050effe7111959.jpg",
+    "22caa6d741b03cf378d0ca3d06461b2d.jpg",
+    "256d2248dc06773558ee851874c646d9.jpg",
+    "271a40b30e3886fc2b522e357865c99f.jpg",
+    "27beb0fc2a42393a03d68a837f5f0aaa.jpg",
+    "2db50d697ceb166dceb654550467c09f.jpg",
+    "2ec188df951d51e667c1e38a63d523dd.jpg",
+    "2fd86e09dc72bdef2a0f74aae44697d4.jpg",
+    "306d3539ae759e152c2aa2a5d844f6b5.jpg",
+    "30c4184f3d7d984b4be694b8e6d9a63a.jpg",
+    "31b3b5d31505e3b5f16abf644dfa0098.jpg",
+    "3312b18a3f6ea3bd22f13e0e069dc952.jpg",
+    "334b1a72cc8a1d8f73f3542e647adfa9.jpg",
+    "3412f85ddf2e92a613184d22b95f3f82.jpg",
+    "363a9e8a6da0cffa043809553c25194d.jpg",
+    "36bf8288f8998ce27bee3a8e0a5d6b6e.jpg",
+    "38f63353b3fae39a9a64b6c88e08889e.jpg",
+    "391e06e468fdabc2ea067686d25bc739.jpg",
+    "3a754cb2fe8ab9052e88844b4939a896.jpg",
+    "3b0128aa475ceeac0da35d0ca57357fe.jpg",
+    "480ebd2ddde95209b35201f3864bb53f.jpg",
+    "489345587594f0e666543f6a083131ed.jpg",
+    "48f5f5ba72a92940218b8a9e0c741c5e.jpg",
+    "4ab4440b0bf44ba292667542528e2729.jpg",
+    "4ba3f66c0fd2b9223ead296fe9988a9e.jpg",
+    "4e27078f3f9bbc10f40a091176d53f2a.jpg",
+    "55993edf2d45e6cce7d22dde06cedd38.jpg",
+    "5667a6000bdd920c7b59adc612aa1274.jpg",
+    "56c5c0b4e8845aeeead9dfae90baeb6a.jpg",
+    "56f93ed5802f89a2a1470dd0eb338464.jpg",
+    "5719dcbb6e58dd0299695967d7ff7f8e.jpg",
+    "58b05c797cf27aecbf64a371d50065e4.jpg",
+    "616537bc869334a3fc00bc04ce75d2a3.jpg",
+    "62199f4fea096960767932d986ddfeb7.jpg",
+    "62254cf4cbd9646268513de3c4e548ec.jpg",
+    "68556e28c6233e967b7073f654406334.jpg",
+    "6f0f2eaf8f818f88125d76e26fe8fe70.jpg",
+    "6f5381e99ec7b25d45f804af454e5e8a.jpg",
+    "716f80ee55b385299e6cba023d354bfb.jpg",
+    "7438e8facd1207ba18e64b4b6649dff1.jpg",
+    "757855873a3b0b6c650a30f5790ebe99.jpg",
+    "7957677ee91bb17813721f7264f2a2c0.jpg",
+    "7c9dbba93c9f372ce109d98066fa6a6a.jpg",
+    "803edc8a3994d7685c8ba9c2e1de67d8.jpg",
+    "80c990fcfea3991ff995adb656b93373.jpg",
+    "80d552643a1de05d6b2e4d1dfa86978b.jpg",
+    "81d987afb1d91f829030e54dd27de308.jpg",
+    "86900959172259ec5962ae102d5cf962.jpg",
+    "8985f5ae43d434dc84e0e4674d155d38.jpg",
+    "8a7fc16d1f331712b766fdd9e8728a03.jpg",
+    "8b22f8eb3f6c26e966231a9b64012b2e.jpg",
+    "8e40e2f3cd4b2dea71a8956e893de375.jpg",
+    "8f7fd59dcf74a9a1ec4cf5bd0b5a6d58.jpg",
+    "9126733dfab3415d88be631a533ffd33.jpg",
+    "94a2504ebe62d3cc29050df081dca3cf.jpg",
+    "94aa0ddaac92db29e181b2a9ba9c8ffc.jpg",
+    "9651a600417d9e4e635640f79aa91d93.jpg",
+    "983c4da9bba551585ec62a0f020578ce.jpg",
+    "9f75cc201923c8e4aae3a6abf27779f8.jpg",
+    "a706344ab0684d2c93a6ab7e0eee3ac8.jpg",
+    "af039d7fa1aa90b198d9b6372d9c8fa2.jpg",
+    "b17ecd14511000f45626555e568d4240.jpg",
+    "b65c9af0d27040506b0a688e3ed5343d.jpg",
+    "b783d4b6c7f22abffb31659077248a36.jpg",
+    "bed728126478e7a144cb156283b44895.jpg",
+    "bf1241df3ee705127aa026277f2f9a36.jpg",
+    "c1dedb59f5cd587db967454f86364e9f.jpg",
+    "c3ea15110efd25f25d66c09d66565945.jpg",
+    "c4c8a6a4bf9735eb2cc77b27f2a4e3df.jpg",
+    "c97290457a85ff77b88be7cf3db3bfc6.jpg",
+    "cad363dff18ebf2cf8e0bdbf5070bcea.jpg",
+    "cae88339e2e496b25bd879c2528e588c.jpg",
+    "ce0414271580ce9febe3b6432584f21a.jpg",
+    "cfe10b33f7c357acd88ef0aaf2917b5d.jpg",
+    "d4171e993c6c7d9ac09351b25e8ad9a4.jpg",
+    "d41b230b34f41869acbcdd43266e3867.jpg",
+    "d72b544a2d4ef279979ae96732fc634d.jpg",
+    "d77ea1d71fc3d7fb2fa8b68697dab3ce.jpg",
+    "d787f1f9657f5656b12b4a1859e3641a.jpg",
+    "d83739dc90c01e067b9052de51082165.jpg",
+    "d8f9ffa1195fb83fbdf36809c9ac8ccb.jpg",
+    "d90231f24d3d1bebf746f25ecf827ced.jpg",
+    "d9e0fee9c2e6fb8531b17a96905920f9.jpg",
+    "ded8ab4700371ef4bbc1fc5da46e2c83 (1).jpg",
+    "ded8ab4700371ef4bbc1fc5da46e2c83.jpg",
+    "e15d7165075e660efeab254ea4659fd7.jpg",
+    "e227147cc5b77d276d6d2316d6e67ad2 (1)-1-1.jpg",
+    "e227147cc5b77d276d6d2316d6e67ad2.jpg",
+    "e67033ec3b139c27e2f4200d23bde7e1.jpg",
+    "e82903b8019b0ca16013da6cf157bdea.jpg",
+    "e8bce22843b397733292cba49b32caaf.jpg",
+    "e96bab123ce3d9a4ece53830e77418c0.jpg",
+    "eb1a80230f3a9e07b9b4b9f3181979c8.jpg",
+    "eec99b74361c76634193be49691e5029.jpg",
+    "ef8606ebfffe3d71799ce2faccc4c342.jpg",
+    "f21a9ec9c726494cbbb104acead5c5b1 (1).jpg",
+    "f21a9ec9c726494cbbb104acead5c5b1.jpg",
+    "f484b64de18ee6ba39424d899a5f89da.jpg",
+    "f5656b99b11f3c844cecce88fa79897e.jpg",
+    "f801ffa7d3429423bd8ea70624327113.jpg",
+    "f91371e1f6df628c017e3765951b7d0f.jpg",
+    "fa073de49b0d4ad72e79eaba74a18406.jpg",
+    "fa5451278b69ef3ac8102757c518b0ee.jpg",
+    "fb0365d7dfa2d20e8ffff9c1eca13299.jpg",
+    "fc3c5010f6a476dd5e67d50fb45cccfe.jpg",
+    "fd4adb872016b1ff79f980fc89dd9fb3.jpg",
+    "fef121131ada6f5d322c2059903e52d7.jpg",
+    "ff3ec8a2c22c2a0343b148f6fcd25929.jpg"
+  ];
 
-    <!-- CTA / second gallery? maybe a single feature strip? we can keep minimal -->
-    <div class="container" style="padding-bottom: 2rem;">
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; border-top: 1px solid #e2d7cd; padding-top: 2.5rem;">
-        <div>
-          <p style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.02em; color: #2a211b;">Request a wood HPL sample kit</p>
-          <p style="color: #7b6b5d; font-weight: 300;">See and feel the Crezenda finish — delivered to your studio.</p>
-        </div>
-        <a href="#" class="btn btn-outline" style="white-space: nowrap;"><i class="fas fa-arrow-right" style="margin-left: 8px;"></i> Order sample</a>
-      </div>
-    </div>
-  </main>
+  const SHAPES = ['square','tall','square','tall'];
+  const IMAGES = FILES.map((file, i) => ({ file, shape: SHAPES[i % SHAPES.length] }));
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer">
-        <div class="logo" style="font-size: 1.4rem;">crezenda<span>.</span></div>
-        <div class="footer-links">
-          <a href="#">Instagram</a>
-          <a href="#">Pinterest</a>
-          <a href="#">Houzz</a>
-          <a href="#">Contact</a>
-        </div>
-        <div style="font-size: 0.85rem;">© 2025 Crezenda — wood HPL designs</div>
-      </div>
-    </div>
-  </footer>
+  const encode = (name) => BASE + encodeURIComponent(name);
 
+  function cardHTML(item, delay) {
+    const src = encode(item.file);
+    return `
+      <div class="cc-card cc-${item.shape}" style="transition-delay:${delay}ms">
+        <button type="button" class="cc-card-button" data-popup-image="${src}" aria-label="Open image">
+          <img src="${src}" alt="" loading="lazy" decoding="async">
+        </button>
+      </div>`;
+  }
+
+  function buildColumns(container, colCount) {
+    const total = IMAGES.length;
+    const base = Math.floor(total / colCount);
+    const remainder = total % colCount;
+    const buckets = Array.from({ length: colCount }, () => []);
+    let idx = 0;
+    for (let c = 0; c < colCount; c++) {
+      const count = base + (c < remainder ? 1 : 0);
+      for (let k = 0; k < count; k++) {
+        buckets[c].push(IMAGES[idx++]);
+      }
+    }
+
+    container.innerHTML = buckets
+      .map((list, ci) => `
+        <div class="cc-column">
+          ${list.map((item, i) => cardHTML(item, (ci * 40) + (i * 60))).join('')}
+        </div>`)
+      .join('');
+  }
+
+  buildColumns(document.getElementById('cc-gallery-desktop'), 5);
+  buildColumns(document.getElementById('cc-gallery-mobile'), 3);
+
+  const cards = section.querySelectorAll('.cc-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+  }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+  cards.forEach((c) => observer.observe(c));
+
+  const mobileColumns = section.querySelectorAll('.cc-gallery-mobile .cc-column');
+  function mobileParallax() {
+    if (window.innerWidth > 749) {
+      mobileColumns.forEach((col) => (col.style.transform = ''));
+      return;
+    }
+    const rect = section.getBoundingClientRect();
+    const wh = window.innerHeight;
+    const progress = Math.min(Math.max((wh - rect.top) / (wh + rect.height), 0), 1);
+    mobileColumns.forEach((col, i) => {
+      const speed = i === 1 ? 20 : 60;
+      col.style.transform = `translateY(${progress * speed * -1}px)`;
+    });
+  }
+  mobileParallax();
+  window.addEventListener('scroll', mobileParallax, { passive: true });
+  window.addEventListener('resize', mobileParallax);
+
+  const popup = section.querySelector('.cc-popup');
+  const popupImg = section.querySelector('.cc-popup-img');
+  const popupClose = section.querySelector('.cc-popup-close');
+
+  function openPopup(src) {
+    popupImg.src = src;
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    popup.classList.remove('is-open');
+    popup.setAttribute('aria-hidden', 'true');
+    popupImg.src = '';
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+  section.querySelectorAll('[data-popup-image]').forEach((b) =>
+    b.addEventListener('click', () => openPopup(b.dataset.popupImage))
+  );
+  popupClose.addEventListener('click', closePopup);
+  popup.addEventListener('click', (e) => { if (e.target === popup) closePopup(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+
+  const ccGrid = section.querySelector('#cc-grid-bg');
+  const GRID = 48;
+  let squares = [];
+
+  function buildSquares() {
+    ccGrid.querySelectorAll('.cc-grid-square').forEach((el) => el.remove());
+    squares = [];
+    const cols = Math.ceil(ccGrid.offsetWidth / GRID);
+    const rows = Math.ceil(ccGrid.offsetHeight / GRID);
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        const s = document.createElement('span');
+        s.className = 'cc-grid-square';
+        s.style.left = `${x * GRID}px`;
+        s.style.top = `${y * GRID}px`;
+        ccGrid.appendChild(s);
+        squares.push(s);
+      }
+    }
+    randomizeSquares();
+  }
+
+  function randomizeSquares() {
+    squares.forEach((s) => s.classList.remove('active'));
+    const active = 8;
+    const chosen = [];
+    const shuffled = [...squares].sort(() => 0.5 - Math.random());
+    const farEnough = (sq) => {
+      const x1 = parseInt(sq.style.left, 10);
+      const y1 = parseInt(sq.style.top, 10);
+      return chosen.every((e) => {
+        const x2 = parseInt(e.style.left, 10);
+        const y2 = parseInt(e.style.top, 10);
+        return Math.abs(x1 - x2) > GRID || Math.abs(y1 - y2) > GRID;
+      });
+    };
+    for (const sq of shuffled) {
+      if (chosen.length >= active) break;
+      if (farEnough(sq)) { sq.classList.add('active'); chosen.push(sq); }
+    }
+  }
+
+  function createLine() {
+    const line = document.createElement('span');
+    const horizontal = Math.random() > 0.5;
+    line.className = `cc-grid-line ${horizontal ? 'is-horizontal' : 'is-vertical'}`;
+    const cols = Math.floor(ccGrid.offsetWidth / GRID);
+    const rows = Math.floor(ccGrid.offsetHeight / GRID);
+    line.style.left = `${Math.floor(Math.random() * cols) * GRID}px`;
+    line.style.top  = `${Math.floor(Math.random() * rows) * GRID}px`;
+    ccGrid.appendChild(line);
+    const travel = horizontal ? ccGrid.offsetWidth : ccGrid.offsetHeight;
+    const keyframes = horizontal
+      ? [{ transform: `translateX(-${travel}px)`, opacity: 0 },
+         { transform: 'translateX(0px)', opacity: 1, offset: 0.15 },
+         { transform: `translateX(${travel}px)`, opacity: 0 }]
+      : [{ transform: `translateY(-${travel}px)`, opacity: 0 },
+         { transform: 'translateY(0px)', opacity: 1, offset: 0.15 },
+         { transform: `translateY(${travel}px)`, opacity: 0 }];
+    line.animate(keyframes, { duration: 5500, easing: 'linear' });
+    setTimeout(() => line.remove(), 5600);
+  }
+
+  buildSquares();
+  setInterval(randomizeSquares, 5000);
+  setInterval(() => { createLine(); createLine(); }, 2200);
+})();
+</script>
 </body>
 </html>
